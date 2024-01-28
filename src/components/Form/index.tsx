@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Flex, Box } from "@chakra-ui/react";
 import { Dispatch, SetStateAction } from 'react';
 import { CalculationData } from '../../services/calculateFee';
 import CartValueInput from "../CartValueInput";
@@ -32,12 +32,26 @@ export default function Form({ setTotalFee }: FormProps ) {
   }
   return (
       <form onSubmit={handleSubmit}>
-        <CartValueInput />
-        <DistanceInput />
-        <NumOfItemsInput />
-        <DateInput />
-        <TimeInput />
-        <Button type="submit">Calculate Delivery Price</Button>
+        <Flex justify="space-between" direction="column" gap="1.5rem">
+          <Box flex="1">
+            <CartValueInput />
+          </Box>
+          <Box flex="1">
+            <DistanceInput />
+          </Box>
+          <Box flex="1">
+            <NumOfItemsInput />
+          </Box>
+          <Box flex="1">
+            <DateInput />
+          </Box>
+          <Box flex="1">
+            <TimeInput />
+          </Box>
+          <Box flex="1">
+            <Button type="submit">Calculate Delivery Price</Button>
+          </Box>
+        </Flex>
       </form>
   )
 }
