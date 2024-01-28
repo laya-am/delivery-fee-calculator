@@ -1,5 +1,10 @@
-import { Box, FormLabel, Input } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormErrorMessage, FormLabel, Input, Text } from "@chakra-ui/react";
 import { useState } from "react";
+import CartValueInput from "../CartValueInput";
+import DistanceInput from "../DistanceInput";
+import NumOfItemsInput from "../NumOfItemsInput";
+import DateInput from "../DateInput";
+import TimeInput from "../TimeInput";
 
 export default function Form() {
   const [totalFee, setTotalFee] = useState(0);
@@ -19,25 +24,24 @@ export default function Form() {
     const hour = +time.slice(0,2);
     const day = new Date(date.toString()).getDay();
     (day === 5 && hour >= 15 && hour <= 18) ? setTotalFee(Math.min(totalFee * 1.2, 15)) : null;
-
+    console.log(cartValue)
+    console.log(distance)
+    console.log(numOfItems)
+    console.log(time)
+    console.log(date)
     e.currentTarget.reset();
   }
   return (
     <Box>
       <form onSubmit={handleSubmit}>
-          <FormLabel htmlFor="cartValue">Cart Value</FormLabel>
-          <Input type="number" id="cartValue" name="cartValue" /><span>EUR</span>
-          <FormLabel htmlFor="distance">Delivery Distance</FormLabel>
-          <Input type="number" id="distance" name="distance" /><span>meters</span>
-          <FormLabel htmlFor="numOfItems">Number of Items</FormLabel>
-          <Input type="number" id="numOfItems" name="numOfItems" />
-          <FormLabel htmlFor="date">Date</FormLabel>
-          <Input type="date" id="date" name="date" />
-          <FormLabel htmlFor="time">Time</FormLabel>
-          <Input type="time" id="time" name="time" />
-          <button>Calculate Delivery Price</button>
+        <CartValueInput />
+        <DistanceInput />
+        <NumOfItemsInput />
+        <DateInput />
+        <TimeInput />
+        <Button type="submit">Calculate Delivery Price</Button>
       </form>
-      <p>Delivery Price : {totalFee} EUR</p>
+      <Text>Delivery Price : {totalFee} €</Text>
     </Box>
   )
 }
