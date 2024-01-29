@@ -21,6 +21,7 @@ export default function CartValueInput() {
                       value={inputValue}
                       onChange={handleInputChange}
                       onBlur={() => setIsTouched(true)}
+                      data-testid= "cartValue"
                   />
               </Box>
               <Box>

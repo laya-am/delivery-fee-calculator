@@ -21,6 +21,7 @@ export default function DistanceInput() {
                     value={inputValue}
                     onChange={handleInputChange}
                     onBlur={() => setIsTouched(true)}
+                    data-testid="deliveryDistance"
                 />
             </Box>
             <Box>

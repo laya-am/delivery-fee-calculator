@@ -12,7 +12,7 @@ function App() {
           <Form setTotalFee={setTotalFee} />
         </Box>
         <Box flex="1">
-          <Text>Delivery Price : {totalFee} €</Text>
+          <Text data-testid="fee">Delivery Price : {totalFee} €</Text>
         </Box>
       </Flex>
     </Box>

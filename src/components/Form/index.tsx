@@ -31,7 +31,7 @@ export default function Form({ setTotalFee }: FormProps ) {
     e.currentTarget.reset();
   }
   return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="form">
         <Flex justify="space-between" direction="column" gap="1.5rem">
           <Box flex="1">
             <CartValueInput />
