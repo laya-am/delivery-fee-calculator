@@ -6,7 +6,7 @@ export default function OrderTimeInput() {
   return (
     <FormControl isRequired>
         <FormLabel htmlFor="orderTime">Order Time</FormLabel>
-        <Input type="datetime-local" id="orderTime" name="orderTime" min={`${today}T00:00`} />
+        <Input type="datetime-local" id="orderTime" name="orderTime" data-testid="orderTime" min={`${today}T00:00`} />
     </FormControl>
   )
 }

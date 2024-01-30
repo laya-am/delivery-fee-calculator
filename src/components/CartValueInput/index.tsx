@@ -1,7 +1,7 @@
 import { FormControl, FormLabel, Input, FormErrorMessage, Flex, Box, Text } from "@chakra-ui/react"
 import { useState, useEffect, ChangeEvent } from "react"
 
-interface CartValueInputProps {
+export interface CartValueInputProps {
     onDataValidityChange: (isValid: boolean) => void;
   }
 
@@ -29,6 +29,7 @@ export default function CartValueInput({ onDataValidityChange } : CartValueInput
                       value={inputValue}
                       onChange={handleInputChange}
                       onBlur={() => setIsTouched(true)}
+                      data-testid= "cartValue"
                   />
               </Box>
               <Box>

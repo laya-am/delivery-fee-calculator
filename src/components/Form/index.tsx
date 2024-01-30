@@ -18,7 +18,6 @@ export default function Form({ setTotalFee }: FormProps ) {
     distance: true,
     numOfItems: true,
   });
-  console.log({inputValidity});
 
 
   function handleDataValidityChange(fieldName: string, isValid: boolean){
@@ -57,7 +56,7 @@ export default function Form({ setTotalFee }: FormProps ) {
     
   }
   return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-testid="form">
         <Flex justify="space-between" direction="column" gap="1.5rem">
           <Box flex="1">
             <CartValueInput onDataValidityChange={(isValid) => handleDataValidityChange('cartValue', isValid)} />
