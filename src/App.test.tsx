@@ -19,8 +19,7 @@ describe('App', () => {
     fireEvent.change(screen.getByTestId('cartValue'), { target: { value: '8' } });
     fireEvent.change(screen.getByTestId('deliveryDistance'), { target: { value: '1000' } });
     fireEvent.change(screen.getByTestId('numberOfItems'), { target: { value: '3' } });
-    fireEvent.change(screen.getByTestId('date'), { target: { value: '2022-01-01' } });
-    fireEvent.change(screen.getByTestId('time'), { target: { value: '12:00 PM' } });
+    fireEvent.change(screen.getByTestId('orderTime'), { target: { value: '2022-01-01T12:00' } });
     fireEvent.submit(form);
 
     expect(totalFeeText).toHaveTextContent('Delivery Price : 4 €');
@@ -31,7 +30,7 @@ describe('App', () => {
     const form = screen.getByTestId('form');
     const totalFeeText = screen.getByTestId('fee');
   
-    fireEvent.change(screen.getByTestId('distance'), { target: { value: '1000.25' } });
+    fireEvent.change(screen.getByTestId('deliveryDistance'), { target: { value: '1000.25' } });
     fireEvent.submit(form);
   
     expect(totalFeeText).toHaveTextContent('Delivery Price : 0 €');

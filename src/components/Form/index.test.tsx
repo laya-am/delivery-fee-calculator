@@ -6,15 +6,14 @@ import Form from '.';
 
 jest.mock('../../services/calculateFee');
 
-test('renders Form component with all the necessary inputs: CartValueInput, DistanceInput, NumOfItemsInput, DateInput, TimeInput and the Calculate Delivery Price button', () => {
+test('renders Form component with all the necessary inputs: CartValueInput, DistanceInput, NumOfItemsInput, OrderTimeInput and the Calculate Delivery Price button', () => {
     const mockSetTotalFee = jest.fn();
 
     render(<Form setTotalFee={mockSetTotalFee} />);
     expect(screen.getByTestId(/cartValue/i)).toBeInTheDocument();
     expect(screen.getByTestId(/deliveryDistance/i)).toBeInTheDocument();
     expect(screen.getByTestId(/numberOfItems/i)).toBeInTheDocument();
-    expect(screen.getByTestId(/date/i)).toBeInTheDocument();
-    expect(screen.getByTestId(/time/i)).toBeInTheDocument();
+    expect(screen.getByTestId(/orderTime/i)).toBeInTheDocument();
     expect(screen.getByText(/Calculate Delivery Price/i)).toBeInTheDocument();
 });
 
@@ -37,8 +36,7 @@ test('submitting the form calls handleSubmit and updates the totalFee state', ()
 //     userEvent.type(screen.getByTestId(/cartValue/i), '8');
 //     userEvent.type(screen.getByTestId(/deliveryDistance/i), '456');
 //     userEvent.type(screen.getByTestId(/numberOfItems/i), '3');
-//     userEvent.type(screen.getByTestId(/date/i), '2022-01-01');
-//     userEvent.type(screen.getByTestId(/time/i), '12:00 PM');
+//     userEvent.type(screen.getByTestId(/orderTime/i), '2022-01-01T12:00');
 
 //     fireEvent.submit(screen.getByTestId('form'));
 
@@ -46,8 +44,7 @@ test('submitting the form calls handleSubmit and updates the totalFee state', ()
 //     cartValue: 8,
 //     distance: 456,
 //     numOfItems: 3,
-//     time: '12:00 PM',
-//     date: '2022-01-01',
+//     orderTime: '2022-01-01T12:00',
 //     };
 
 //     //this line doesn't work:

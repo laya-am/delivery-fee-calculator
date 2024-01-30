@@ -17,8 +17,6 @@ export interface CalculationData {
    
    newFee = cartValue >= 200 ? 0 :  Math.min(cartSurcharge + deliveryFee + bulkFee + numOfItemsSurcharge, 15);
    
-   console.log({orderTime});
-
    const date = orderTime.slice(0,10);
    const time = orderTime.slice(11,16);
    
