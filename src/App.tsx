@@ -9,7 +9,7 @@ function App() {
     <Box margin= "0 auto" padding= "2rem" textAlign= "center">
       <Flex justify="space-between" direction="column" gap="3rem">
         <Box flex="1">
-          <Form setTotalFee={setTotalFee} />
+          <Form data-testid="form" setTotalFee={setTotalFee} />
         </Box>
         <Box flex="1">
           <Text data-testid="fee">Delivery Price : {totalFee} €</Text>

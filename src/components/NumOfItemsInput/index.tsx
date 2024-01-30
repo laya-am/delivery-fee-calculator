@@ -11,7 +11,14 @@ export default function NumOfItemsInput() {
   return (
     <FormControl isInvalid={isError} isRequired>
         <FormLabel htmlFor="numOfItems">Number of Items</FormLabel>
-        <Input type="number" id="numOfItems" name="numOfItems" value={inputValue} onChange={handleInputChange} onBlur={() => setIsTouched(true)} data-testid="numberOfItems" />
+        <Input 
+          type="number"
+          id="numOfItems"
+          name="numOfItems"
+          value={inputValue}
+          onChange={handleInputChange}
+          onBlur={() => setIsTouched(true)}
+          data-testid="numberOfItems" />
         {isError && <FormErrorMessage>Please enter a valid whole number.</FormErrorMessage>}
     </FormControl>
   )
