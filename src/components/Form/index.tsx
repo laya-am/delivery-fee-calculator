@@ -1,5 +1,5 @@
 import { Button, Flex, Box } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { CalculationData } from '../../services/calculateFee';
 import CartValueInput from "../CartValueInput";
 import DistanceInput from "../DistanceInput";
@@ -13,8 +13,18 @@ interface FormProps {
 
 export default function Form({ setTotalFee }: FormProps ) {
 
+  const [isFormValid, setIsFormValid] = useState<boolean>(true);
+console.log({isFormValid});
+
+
+  function handleDataValidityChange(isValid: boolean){
+    setIsFormValid(() => isValid);
+  };
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>){
+
     e.preventDefault();
+
     const formData = new FormData(e.currentTarget);
     const data: CalculationData = {
       cartValue: +formData.get('cartValue')!,
@@ -22,11 +32,19 @@ export default function Form({ setTotalFee }: FormProps ) {
       numOfItems: +formData.get('numOfItems')!,
       orderTime: formData.get('orderTime') as string,
   };
-    
-    const newFee = calculateFee(data);
-    setTotalFee(newFee);
 
-    e.currentTarget.reset();
+  console.log(data)
+     
+    if (!isFormValid) {
+      console.log("not valid");
+      return
+    };
+      
+      const newFee = calculateFee(data);
+      setTotalFee(newFee);
+
+      e.currentTarget.reset();
+    
   }
   return (
       <form onSubmit={handleSubmit}>
@@ -35,7 +53,7 @@ export default function Form({ setTotalFee }: FormProps ) {
             <CartValueInput />
           </Box>
           <Box flex="1">
-            <DistanceInput />
+            <DistanceInput onDataValidityChange={handleDataValidityChange} />
           </Box>
           <Box flex="1">
             <NumOfItemsInput />
@@ -44,7 +62,7 @@ export default function Form({ setTotalFee }: FormProps ) {
             <OrderTimeInput />
           </Box>
           <Box flex="1">
-            <Button type="submit">Calculate Delivery Price</Button>
+            <Button type="submit" isDisabled={!isFormValid}>Calculate Delivery Price</Button>
           </Box>
         </Flex>
       </form>
