@@ -24,6 +24,7 @@ export default function Form({ setTotalFee }: FormProps ) {
       time: formData.get('time') as string,
       date: formData.get('date') as string,
   };
+  console.log(data)
     
     const newFee = calculateFee(data);
     setTotalFee(newFee);
