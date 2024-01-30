@@ -6,7 +6,6 @@ export default function DateInput() {
   return (
     <FormControl isRequired>
         <FormLabel htmlFor="date">Date</FormLabel>
-        <Input type="date" id="date" name="date" min={today} data-testid="date" />
     </FormControl>
   )
 }
