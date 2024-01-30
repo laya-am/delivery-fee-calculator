@@ -1,7 +1,11 @@
 import { FormControl, FormLabel, Input, FormErrorMessage, Flex, Box, Text } from "@chakra-ui/react"
-import { useState, ChangeEvent } from "react"
+import { useState, useEffect, ChangeEvent } from "react"
 
-export default function CartValueInput() {
+interface CartValueInputProps {
+    onDataValidityChange: (isValid: boolean) => void;
+  }
+
+export default function CartValueInput({ onDataValidityChange } : CartValueInputProps) {
     const [inputValue, setInputValue] = useState<string>('')
     const [isTouched, setIsTouched] = useState<boolean>(false);
 
@@ -9,6 +13,10 @@ export default function CartValueInput() {
   
     const isError = isTouched && (inputValue === '' || +inputValue <= 0)
     
+    useEffect(() => {
+        onDataValidityChange(!isError);
+      }, [isError]);
+
   return (
     <FormControl isInvalid={isError} isRequired>
         <FormLabel htmlFor="cartValue">Cart Value</FormLabel>
