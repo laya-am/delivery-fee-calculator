@@ -5,8 +5,8 @@ import { useState, useEffect, ChangeEvent } from "react";
 interface DistanceInputProps {
     onDataValidityChange: (isValid: boolean) => void;
   }
-
-export default function DistanceInput({onDataValidityChange}: DistanceInputProps) {
+ 
+export default function DistanceInput({ onDataValidityChange } : DistanceInputProps) {
     const [inputValue, setInputValue] = useState<string>('');
     const [isTouched, setIsTouched] = useState<boolean>(false);
     
@@ -16,7 +16,7 @@ export default function DistanceInput({onDataValidityChange}: DistanceInputProps
   
     useEffect(() => {
         onDataValidityChange(!isError);
-      }, [isError, onDataValidityChange]);
+      }, [isError]);
 
     return (
     <FormControl isInvalid={isError} isRequired>

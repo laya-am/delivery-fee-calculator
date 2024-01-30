@@ -13,13 +13,22 @@ interface FormProps {
 
 export default function Form({ setTotalFee }: FormProps ) {
 
-  const [isFormValid, setIsFormValid] = useState<boolean>(true);
-console.log({isFormValid});
+  const [inputValidity, setInputValidity] = useState({
+    cartValue: true,
+    distance: true,
+    numOfItems: true,
+  });
+  console.log({inputValidity});
 
 
-  function handleDataValidityChange(isValid: boolean){
-    setIsFormValid(() => isValid);
+  function handleDataValidityChange(fieldName: string, isValid: boolean){
+    setInputValidity(() => ({
+      ...inputValidity,
+      [fieldName]: isValid,
+    }));
   };
+
+  const isFormValid = Object.values(inputValidity).every((isValid) => isValid);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>){
 
@@ -43,20 +52,21 @@ console.log({isFormValid});
       const newFee = calculateFee(data);
       setTotalFee(newFee);
 
-      e.currentTarget.reset();
+      // not sure if resetting the form makes a better user experience
+      // e.currentTarget.reset();
     
   }
   return (
       <form onSubmit={handleSubmit}>
         <Flex justify="space-between" direction="column" gap="1.5rem">
           <Box flex="1">
-            <CartValueInput />
+            <CartValueInput onDataValidityChange={(isValid) => handleDataValidityChange('cartValue', isValid)} />
           </Box>
           <Box flex="1">
-            <DistanceInput onDataValidityChange={handleDataValidityChange} />
+            <DistanceInput onDataValidityChange={(isValid) => handleDataValidityChange('distance', isValid)} />
           </Box>
           <Box flex="1">
-            <NumOfItemsInput />
+            <NumOfItemsInput onDataValidityChange={(isValid) => handleDataValidityChange('numOfItems', isValid)} />
           </Box>
           <Box flex="1">
             <OrderTimeInput />
