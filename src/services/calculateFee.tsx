@@ -2,13 +2,12 @@ export interface CalculationData {
    cartValue: number;
    distance: number;
    numOfItems: number;
-   time: string;
-   date: string;
+   orderTime: string;
 } 
 
  export default function calculateFee(data: CalculationData): number {
    
-   const {cartValue , distance , numOfItems , time, date} = data;
+   const {cartValue , distance , numOfItems , orderTime} = data;
    let newFee : number;
 
    const cartSurcharge : number = cartValue < 10 ? 10 - cartValue : 0;
@@ -18,8 +17,15 @@ export interface CalculationData {
    
    newFee = cartValue >= 200 ? 0 :  Math.min(cartSurcharge + deliveryFee + bulkFee + numOfItemsSurcharge, 15);
    
+   console.log({orderTime});
+
+   const date = orderTime.slice(0,10);
+   const time = orderTime.slice(11,16);
+   
    const hour = + time.slice(0,2);
    const day = new Date(date).getDay();
+
    (day === 5 && hour >= 15 && hour <= 18) ? newFee = Math.min(newFee * 1.2 , 15) : null;
+
    return newFee
 }
