@@ -4,8 +4,7 @@ import { CalculationData } from '../../services/calculateFee';
 import CartValueInput from "../CartValueInput";
 import DistanceInput from "../DistanceInput";
 import NumOfItemsInput from "../NumOfItemsInput";
-import DateInput from "../DateInput";
-import TimeInput from "../TimeInput";
+import OrderTimeInput from "../OrderTimeInput";
 import calculateFee from "../../services/calculateFee";
 
 interface FormProps {
@@ -21,8 +20,7 @@ export default function Form({ setTotalFee }: FormProps ) {
       cartValue: +formData.get('cartValue')!,
       distance: +formData.get('distance')!,
       numOfItems: +formData.get('numOfItems')!,
-      time: formData.get('time') as string,
-      date: formData.get('date') as string,
+      orderTime: formData.get('orderTime') as string,
   };
   console.log(data)
     
@@ -44,10 +42,7 @@ export default function Form({ setTotalFee }: FormProps ) {
             <NumOfItemsInput />
           </Box>
           <Box flex="1">
-            <DateInput />
-          </Box>
-          <Box flex="1">
-            <TimeInput />
+            <OrderTimeInput />
           </Box>
           <Box flex="1">
             <Button type="submit">Calculate Delivery Price</Button>
