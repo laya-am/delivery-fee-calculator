@@ -26,11 +26,12 @@ describe('App', () => {
   });
 
   it('does not update total fee when Form is submitted with invalid value', () => {
-    render(<App />);
+    render(<App />); 
     const form = screen.getByTestId('form');
     const totalFeeText = screen.getByTestId('fee');
   
     fireEvent.change(screen.getByTestId('deliveryDistance'), { target: { value: '1000.25' } });
+    fireEvent.blur(screen.getByTestId('deliveryDistance'));
     fireEvent.submit(form);
   
     expect(totalFeeText).toHaveTextContent('Delivery Price : 0 €');

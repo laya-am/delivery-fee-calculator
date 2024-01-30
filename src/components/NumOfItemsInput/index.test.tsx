@@ -2,14 +2,16 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import NumOfItemsInput from '.';
 
+const mockOnDataValidityChange = jest.fn();
+
 describe('NumOfItemsInput', () => {
   it('renders without errors', () => {
-    render(<NumOfItemsInput />);
+    render(<NumOfItemsInput onDataValidityChange={mockOnDataValidityChange} />);
     expect(screen.getByTestId('numberOfItems')).toBeInTheDocument();
   });
 
   it('displays an error message when there is no value given', () => {
-    render(<NumOfItemsInput />);
+    render(<NumOfItemsInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('numberOfItems');
 
     fireEvent.blur(input);
@@ -18,7 +20,7 @@ describe('NumOfItemsInput', () => {
   });
 
   it('displays an error message when the value is invalid', () => {
-    render(<NumOfItemsInput />);
+    render(<NumOfItemsInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('numberOfItems');
 
     fireEvent.change(input, { target: { value: '5.5' } });
@@ -35,7 +37,7 @@ describe('NumOfItemsInput', () => {
   });
 
   it('does not display an error message when the value is valid', () => {
-    render(<NumOfItemsInput />);
+    render(<NumOfItemsInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('numberOfItems');
 
     fireEvent.change(input, { target: { value: '50' } });
@@ -45,7 +47,7 @@ describe('NumOfItemsInput', () => {
   });
 
   it('updates the inputValue state on input change', () => {
-    render(<NumOfItemsInput />);
+    render(<NumOfItemsInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('numberOfItems') as HTMLInputElement;
 
     fireEvent.change(input, { target: { value: '30' } });

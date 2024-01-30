@@ -18,7 +18,6 @@ export default function Form({ setTotalFee }: FormProps ) {
     distance: true,
     numOfItems: true,
   });
-  console.log({inputValidity});
 
 
   function handleDataValidityChange(fieldName: string, isValid: boolean){

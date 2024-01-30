@@ -2,14 +2,15 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import DistanceInput from '.';
 
+const mockOnDataValidityChange = jest.fn();
 describe('DistanceInput', () => {
   it('renders without errors', () => {
-    render(<DistanceInput />);
+    render(<DistanceInput onDataValidityChange={mockOnDataValidityChange} />);
     expect(screen.getByLabelText(/distance/i)).toBeInTheDocument();
   });
 
   it('displays an error message when there is no value given', () => {
-    render(<DistanceInput />);
+    render(<DistanceInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('deliveryDistance');
 
     fireEvent.blur(input);
@@ -18,7 +19,7 @@ describe('DistanceInput', () => {
   });
 
   it('displays an error message when the value is invalid', () => {
-    render(<DistanceInput />);
+    render(<DistanceInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('deliveryDistance');
 
     fireEvent.change(input, { target: { value: '5.5' } });
@@ -35,7 +36,7 @@ describe('DistanceInput', () => {
   });
 
   it('does not display an error message when the value is valid', () => {
-    render(<DistanceInput />);
+    render(<DistanceInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('deliveryDistance');
 
     fireEvent.change(input, { target: { value: '50' } });
@@ -45,7 +46,7 @@ describe('DistanceInput', () => {
   });
 
   it('updates the inputValue state on input change', () => {
-    render(<DistanceInput />);
+    render(<DistanceInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('deliveryDistance') as HTMLInputElement;
 
     fireEvent.change(input, { target: { value: '30' } });

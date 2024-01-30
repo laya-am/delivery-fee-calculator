@@ -1,15 +1,17 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import CartValueInput from '.';
+ 
+  const mockOnDataValidityChange = jest.fn();
 
 describe('CartValueInput', () => {
   it('renders without errors', () => {
-    render(<CartValueInput />);
+    render(<CartValueInput onDataValidityChange={mockOnDataValidityChange} />);
     expect(screen.getByLabelText(/cart Value/i)).toBeInTheDocument();
   });
 
   it('displays an error message when there is no value given', () => {
-    render(<CartValueInput />);
+    render(<CartValueInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('cartValue');
 
     fireEvent.blur(input);
@@ -18,7 +20,7 @@ describe('CartValueInput', () => {
   });
 
   it('displays an error message when the value is invalid', () => {
-    render(<CartValueInput />);
+    render(<CartValueInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('cartValue');
 
     fireEvent.change(input, { target: { value: '-5' } });
@@ -35,7 +37,7 @@ describe('CartValueInput', () => {
   });
 
   it('does not display an error message when the value is valid', () => {
-    render(<CartValueInput />);
+    render(<CartValueInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('cartValue');
 
     fireEvent.change(input, { target: { value: '50' } });
@@ -45,7 +47,7 @@ describe('CartValueInput', () => {
   });
 
   it('updates the inputValue state on input change', () => {
-    render(<CartValueInput />);
+    render(<CartValueInput onDataValidityChange={mockOnDataValidityChange} />);
     const input = screen.getByTestId('cartValue') as HTMLInputElement;
 
     fireEvent.change(input, { target: { value: '30' } });
