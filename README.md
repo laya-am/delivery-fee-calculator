@@ -1,40 +1,35 @@
-
-
-#  Delivery Fee Calculator 
+# Delivery Fee Calculator
 
 This is a delivery fee calculator: an application used when a customer is ready with their shopping cart and they want to see how much the delivery will cost. The delivery price depends on the user input of cart value, the number of items in the cart, the time of the order, and the delivery distance.
 
-
 ## Installation and Setup Instructions
 
-
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
 Installation:
 
-`npm install`  
+`npm install`
 
-To Run Test Suite:  
+To Run Test Suite:
 
-`npm test`  
+`npm test`
 
 To Start Server:
 
-`npm run dev`  
+`npm run dev`
 
 To Visit App:
 
-`localhost:5173`  
+`localhost:5173`
 
 ## About the Project
-  
 
-This app is developed using `Vite`, `React`, and `typescript`. All the components are tested by `jest` and `react-testing-library`. For styling `chakra-ui` is used. 
+This app is developed using `Vite`, `React`, and `typescript`. All the components are tested by `jest` and `react-testing-library`. For styling `chakra-ui` is used.
 
 The form has complete validation in every input field, in order to avoid redundant requests to the backend and also bad user experience.
 This means when the input value is invalid, the form gives clear feedback to the user and prevents the form from submition by disabling the button. For this purpose `chakra ui` was used.
- 
-The app is fully responsive and accessible. 
+
+The app is fully responsive and accessible.
 It's alse accessible by keyboard.
 The accessibility of the app was checked using this article by Karl Groves: [6 Quick tests you can do to test your forms for accessibility](https://karlgroves.com/6-quick-tests-you-can-do-to-test-your-forms-for-accessibility/)
 
@@ -56,10 +51,5 @@ All the mentioned filed are fully tested using `jest` and `react-testing-library
 
 ## Project Screen Shots
 
-
 ![screenshot1](/public/Screenshot1.png "screenshot 1")
 ![screenshot2](/public/Screenshot2.png "screenshot 2")
-
-
-
-
