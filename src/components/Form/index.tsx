@@ -39,6 +39,7 @@ export default function Form({ setTotalFee }: FormProps) {
     };
 
     if (!isFormValid) return;
+console.log(data);
 
     const newFee = calculateFee(data);
     setTotalFee(newFee);
