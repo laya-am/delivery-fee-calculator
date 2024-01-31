@@ -1,92 +1,55 @@
-# React + TypeScript + Vite
+# Delivery Fee Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-## Project Name & Pitch
-
-#### Example:
-
-TweetWorld 
-
-An application used to filter data form Twitter based on user preference, built with React, Redux, JavaScript, and CSS.
-
-## Project Status
-(only necessary if incomplete)
-
-#### Example:
-
-This project is currently in development. Users can filter tweets by username and keyword and see visual data representation. Functionality to sort by additional parameters is in progress.
-
-## Project Screen Shot(s)
-
-#### Example:   
-
-[ PRETEND SCREEN SHOT IS HERE ]
-
-[ PRETEND OTHER SCREEN SHOT IS HERE ]
+This is a delivery fee calculator: an application used when a customer is ready with their shopping cart and they want to see how much the delivery will cost. The delivery price depends on the user input of cart value, the number of items in the cart, the time of the order, and the delivery distance.
 
 ## Installation and Setup Instructions
 
-#### Example:  
-
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
 Installation:
 
-`npm install`  
+`npm install`
 
-To Run Test Suite:  
+To Run Test Suite:
 
-`npm test`  
+`npm test`
 
 To Start Server:
 
-`npm start`  
+`npm run dev`
 
 To Visit App:
 
-`localhost:3000/ideas`  
+`localhost:5173`
 
-## Reflection
+## About the Project
 
-  - What was the context for this project? (ie: was this a side project? was this for Turing? was this for an experiment?)
-  - What did you set out to build?
-  - Why was this project challenging and therefore a really good learning experience?
-  - What were some unexpected obstacles?
-  - What tools did you use to implement this project?
-      - This might seem obvious because you are IN this codebase, but to all other humans now is the time to talk about why you chose webpack instead of create react app, or D3, or vanilla JS instead of a framework etc. Brag about your choices and justify them here.  
+This app is developed using `Vite`, `React`, and `typescript`. All the components are tested by `jest` and `react-testing-library`. For styling `chakra-ui` is used.
 
-#### Example:  
+The form has complete validation in every input field, in order to avoid redundant requests to the backend and also bad user experience.
+This means when the input value is invalid, the form gives clear feedback to the user and prevents the form from submition by disabling the button. For this purpose `chakra ui` was used.
 
-This was a 3 week long project built during my third module at Turing School of Software and Design. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.  
+The app is fully responsive and accessible.
+It's alse accessible by keyboard.
+The accessibility of the app was checked using this article by Karl Groves: [6 Quick tests you can do to test your forms for accessibility](https://karlgroves.com/6-quick-tests-you-can-do-to-test-your-forms-for-accessibility/)
 
-Originally I wanted to build an application that allowed users to pull data from the Twitter API based on what they were interested in, such as 'most tagged users'. I started this process by using the `create-react-app` boilerplate, then adding `react-router-4.0` and `redux`.  
+In order to make the code readable, `prettier` library is used to keep all the code clean and correctly formatted.
 
-One of the main challenges I ran into was Authentication. This lead me to spend a few days on a research spike into OAuth, Auth0, and two-factor authentication using Firebase or other third parties. Due to project time constraints, I had to table authentication and focus more on data visualization from parts of the API that weren't restricted to authenticated users.
+## Project Structure
 
-At the end of the day, the technologies implemented in this project are React, React-Router 4.0, Redux, LoDash, D3, and a significant amount of VanillaJS, JSX, and CSS. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes. In the next iteration I plan on handrolling a `webpack.config.js` file to more fully understand the build process.
-## Expanding the ESLint configuration
- 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+In order to keep the code maintainable a clear structure is followed:
 
-- Configure the top-level `parserOptions` property like this:
+Inside src directory:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
+There are five components: one `Form` and four input fields.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+There is also the `calculateFee` function inside `services` that calculates the delivery fee.
+
+All these come together in `App.tsx` Where a heading, the form, and the fee are displayed all together.
+
+All the mentioned filed are fully tested using `jest` and `react-testing-library`. Some additional libraries are also used to make the tests compatible with `typescript`.
+
+## Project Screen Shots
+
+![screenshot1](/public/Screenshot1.png "screenshot 1")
+![screenshot2](/public/Screenshot2.png "screenshot 2")
