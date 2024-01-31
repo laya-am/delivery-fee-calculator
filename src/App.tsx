@@ -1,4 +1,4 @@
-import { Text, Flex, Box } from "@chakra-ui/react";
+import { Text, Flex, Box, Heading } from "@chakra-ui/react";
 import Form from "./components/Form";
 import { useState } from "react";
 
@@ -6,16 +6,15 @@ function App() {
   const [totalFee, setTotalFee] = useState(0);
 
   return (
-    <Box margin="0 auto" padding="2rem" textAlign="center">
-      <Flex justify="space-between" direction="column" gap="3rem">
+      <Flex justify="space-between" align="center" direction="column" gap="4rem" padding="2rem" textAlign="center" height="100vh">
+      <Heading>Delivery Fee Calculator</Heading>
         <Box flex="1">
           <Form data-testid="form" setTotalFee={setTotalFee} />
         </Box>
         <Box flex="1">
-          <Text data-testid="fee">Delivery Price : {totalFee} €</Text>
+          <Text data-testid="fee" fontSize='1.6rem' >Delivery Price : {totalFee} €</Text>
         </Box>
       </Flex>
-    </Box>
   );
 }
 
