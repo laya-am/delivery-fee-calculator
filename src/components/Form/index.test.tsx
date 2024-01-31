@@ -2,9 +2,7 @@ import "@testing-library/jest-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import Form from ".";
 
-
 describe("Form Component", () => {
-
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -29,5 +27,4 @@ describe("Form Component", () => {
 
     expect(mockSetTotalFee).toHaveBeenCalledTimes(1);
   });
-
 });

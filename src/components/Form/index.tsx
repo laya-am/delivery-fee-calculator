@@ -39,7 +39,6 @@ export default function Form({ setTotalFee }: FormProps) {
     };
 
     if (!isFormValid) return;
-console.log(data);
 
     const newFee = calculateFee(data);
     setTotalFee(newFee);
@@ -73,7 +72,7 @@ console.log(data);
           <OrderTimeInput />
         </Box>
         <Box flex="1">
-          <Button type="submit" isDisabled={!isFormValid}>
+          <Button type="submit" isDisabled={!isFormValid} color="#00C1E8">
             Calculate Delivery Price
           </Button>
         </Box>

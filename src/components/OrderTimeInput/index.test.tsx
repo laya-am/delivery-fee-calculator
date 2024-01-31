@@ -12,7 +12,8 @@ describe("OrderTimeInput Component", () => {
   it("displays the current date as the minimum value for the input field", () => {
     render(<OrderTimeInput />);
     const today = new Date().toISOString().split("T")[0];
-    expect(screen.getByTestId(/orderTime/i).getAttribute("min")).toBe(`${today}T00:00`);
+    expect(screen.getByTestId(/orderTime/i).getAttribute("min")).toBe(
+      `${today}T00:00`,
+    );
   });
-
 });
